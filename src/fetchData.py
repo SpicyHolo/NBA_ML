@@ -66,8 +66,7 @@ class AllNBAFetch():
         self.df = self.get_all_players_awards()
 
         # Save to csv file
-        self.df.to_csv(f'{self.dir}/src/all_nba.csv')
-
+        self.df.to_csv(f'{self.dir}/src/all_nba.csv', index=False)
     # Returns list of all players from NBA API
     def get_all_players(self):
         return nba_api.stats.static.players.get_players()
@@ -94,4 +93,8 @@ class AllNBAFetch():
                 player_data.append(tmp_df)
 
         df = pd.concat(player_data)
+
+        # Sort by PLAYER_ID, SEASON
+        df = df.sort_values(by=['PERSON_ID', 'SEASON'])
+
         return df
