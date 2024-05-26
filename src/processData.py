@@ -145,8 +145,9 @@ class processData:
         df = self.df.copy()
         first_season = df.drop_duplicates(subset='PLAYER_ID', keep='first')
 
-        df['ROOKIE'] = 0.0
+        df['ROOKIE'] = 0
 
-        df.loc[first_season.index, 'ROOKIE'] = 1.0
+        df.loc[first_season.index, 'ROOKIE'] = 1
+        df.to_csv('janek.csv')
         return df
 
