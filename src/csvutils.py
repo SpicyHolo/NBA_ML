@@ -1,5 +1,4 @@
 import os
-import json
 
 class csvWriter():
     def __init__(self, dir='data/src'):
@@ -22,17 +21,3 @@ class csvWriter():
     # Get csv file path, based on root directory of interface
     def get_file_path(self, filename):
         return f'{self.dir}/{filename}.csv'
-
-class resultWriter():
-    def __init__(self, dir='out'):
-        self.dir = dir
-        os.makedirs(self.dir, exist_ok=True)
-        print(f"Initialised output dir {self.dir}")
-    
-    def __call__(self, filename, data_dict):
-        file_path = self.get_file_path(filename)
-        with open(file_path, "w") as f: 
-            json.dump(data_dict, f, indent=4, separators=(',', ': '))
-
-    def get_file_path(self, filename):
-        return f'{self.dir}/{filename}'

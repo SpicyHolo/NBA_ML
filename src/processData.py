@@ -47,7 +47,7 @@ class processData:
     # Get all seasons, starting 1946 to current year (based on PC time)
     def get_all_seasons(self, use_legacy_data=True):
         current_year= datetime.now().year
-        first_year = 1946 if use_legacy_data else 1996
+        first_year = 1946 if use_legacy_data else 2012
 
         seasons = [f'{i}-{str(i+1)[-2:]}' for i in range(first_year, current_year)]
         return seasons
@@ -148,6 +148,5 @@ class processData:
         df['ROOKIE'] = 0
 
         df.loc[first_season.index, 'ROOKIE'] = 1
-        df.to_csv('janek.csv')
         return df
 

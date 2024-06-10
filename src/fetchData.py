@@ -7,7 +7,7 @@ import time
 from datetime import datetime
 from tqdm import tqdm
 
-from csvutils import csvWriter
+from .csvutils import csvWriter
 
 # Handling writing API data to csv, for faster access
 
